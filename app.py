@@ -63,22 +63,35 @@ if st.button("Run Fetal Health Analysis"):
         result = response.json()
         prediction = result["prediction"]
 
-        # Color coded prediction card
-        color_map = {
-            "Normal": "#d0f0c0",
-            "Suspect": "#fff3cd",
-            "Pathologic": "#f8d7da"
+        # ✅ NEW glass card display
+        glass_colors = {
+            "Normal": "rgba(208, 240, 192, 0.25)",
+            "Suspect": "rgba(255, 243, 205, 0.25)",
+            "Pathologic": "rgba(248, 215, 218, 0.25)"
         }
-        bg_color = color_map.get(prediction, "#e2e3e5")
+        glass_color = glass_colors.get(prediction, "rgba(255,255,255,0.25)")
 
         st.markdown(
             f"""
-            <div style="background-color: {bg_color}; padding: 20px; border-radius: 8px; border: 1px solid #ccc;">
-            <h3 style='text-align: center;'>🩺 Predicted Fetal Health Status: <strong>{prediction}</strong></h3>
+            <div style="
+                background: {glass_color};
+                border-radius: 15px;
+                padding: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                color: #333;
+                text-align: center;
+            ">
+                <h3>🩺 Predicted Fetal Health Status: <strong>{prediction}</strong></h3>
             </div>
             """,
             unsafe_allow_html=True
         )
+
+    except Exception as e:
+        st.error(f"API call failed.\n\n{e}")
 
         # Summary of input parameters
         st.subheader("📊 CTG Input Summary")
