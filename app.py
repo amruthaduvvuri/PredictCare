@@ -59,7 +59,7 @@ st.header("🩺 Diagnostic Output")
 
 if st.button("Run Fetal Health Analysis"):
     try:
-        response = requests.post("http://127.0.0.1:8000/predict", json=inputs)
+        response = requests.post("https://predictcare-1.onrender.com/predict", json=inputs)
         result = response.json()
         prediction = result["prediction"]
 
