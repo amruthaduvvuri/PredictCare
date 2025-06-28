@@ -63,7 +63,6 @@ if st.button("Run Fetal Health Analysis"):
         result = response.json()
         prediction = result["prediction"]
 
-        # ✅ NEW glass card display
         glass_colors = {
             "Normal": "rgba(208, 240, 192, 0.25)",
             "Suspect": "rgba(255, 243, 205, 0.25)",
@@ -91,14 +90,11 @@ if st.button("Run Fetal Health Analysis"):
         )
 
     except Exception as e:
-        st.error(f"API call failed.\n\n{e}")
-
-        # Summary of input parameters
-        st.subheader("📊 CTG Input Summary")
-        summary_table = "| Parameter | Value |\n|-----------|-------|\n"
-        for key, value in inputs.items():
-            summary_table += f"| {key.replace('_',' ').capitalize()} | {value} |\n"
-        st.markdown(summary_table)
-
-    except Exception as e:
         st.error(f"API call failed. Ensure FastAPI is running.\n\n{e}")
+
+    # ✅ Always show input summary, even if API call failed
+    st.subheader("📊 CTG Input Summary")
+    summary_table = "| Parameter | Value |\n|-----------|-------|\n"
+    for key, value in inputs.items():
+        summary_table += f"| {key.replace('_',' ').capitalize()} | {value} |\n"
+    st.markdown(summary_table)
