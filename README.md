@@ -8,7 +8,7 @@ It’s designed to support early detection of fetal distress, helping healthcare
 
 **🩺 What makes it cool?**
 
-✅ 96% accuracy with a Gradient Boosting model — way ahead of simpler approaches.
+✅ 94.68% accuracy with a Gradient Boosting model — way ahead of simpler approaches.
 ✅ A full ML pipeline: from data cleaning, EDA, multi-model training, and hyperparameter tuning to feature importance analysis.
 ✅ Live FastAPI backend serving real-time predictions.
 ✅ A sleek Streamlit dashboard where clinicians (or you!) can enter CTG parameters and instantly see health risk classifications — color-coded for clarity.
